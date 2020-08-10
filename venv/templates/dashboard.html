@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TRACKR</title>
+    <link rel="stylesheet" href=" {{ url_for('static', filename='fontawesome/fontawesome/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/fontawesome/css/brands.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/fontawesome/css/solid.css') }}">
+    <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+    <!--    <link rel="stylesheet" type="text/css" href="dashboard.css">-->
+    <style>
+        body {
+            margin:0;
+            font-family: 'Roboto', sans-serif;
+        }
+        .nav {
+            margin: 0;
+            padding: 0;
+            height: 7vh;
+            position: relative;
+        }
+
+        .nav li {
+            list-style-type: none;
+            float: left;
+        }
+
+        .rightalign{
+            position: absolute;
+            right: 5%;
+            height: 100%;
+            display: -webkit-flex;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav li img {
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            position: absolute;
+            left: 5%;
+        }
+
+        .nav li a {
+            color: black;
+            margin-left: 5vw;
+            text-decoration: none;
+        }
+
+        .logout{
+            text-align: center;
+            border-radius: 15px;
+            border-style: solid;
+            border-color: black;
+            margin-left: 5vw;
+            padding: 15px 32px;
+            text-align: center;
+        }
+
+        .maincontent, .apps, #appList {
+            width: 90%;
+            margin: auto;
+            box-sizing: border-box;
+            margin-top: 3%;
+        }
+        .leftbox{
+            background-color: #DCD3EE;
+            width: 30%;
+            height: 40vh;
+            float: left;
+        }
+        .rightbox{
+            background-color: #8F00FF;
+            width: 70%;
+            height: 40vh;
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+            position: relative;
+        }
+        .rightbox h1 {
+            position: absolute;
+            margin-left: 10%;
+            font-size: 3.2vw;
+            white-space: normal;
+            color: white;
+        }
+        #date {
+            position: absolute;
+            margin-left: 10%;
+            margin-top :-22%;
+            color: white;
+        }
+        #encouragement {
+            position: absolute;
+            margin-left: 10%;
+            margin-top: 27%;
+            color: white;
+        }
+        table {
+          border-collapse: collapse;
+          width: 80%;
+          text-align: center;
+            margin-right: auto;
+
+margin-left: auto;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <ul>
+        <li><img src="{{ url_for('static', filename='trackr_logo2_transparent.png') }}" /></li>
+        <!--        <li class="left"><img src="venv/trackr_logo_transparent.png"></li>-->
+        <div class="rightalign">
+            <li><a href="">Applications Dashboard</a></li>
+            <li><a href="addform">Add Application</a></li>
+            <li><a href="profile">Profile</a></li>
+            <li><a href="home" class="logout">Logout</a></li>
+        </div>
+    </ul>
+</div>
+<div class="maincontent">
+    <div class="leftbox">
+        Pie chart goes here
+    </div>
+    <div class="rightbox">
+        <p id="date"> {{ currTime }} <br> </p>
+        <h1> Congratulations, Vicky! <br> You have submitted {{ numApps }} applications! </h1>
+        <p id="encouragement"> <br> Keep up the good work! </p>
+    </div>
+</div>
+<div class="apps">
+    <h4><b>List of Submitted Applications</b></h4>
+    <div id="appList">
+        <table>
+            <tr>
+                <th>Company Name</th>
+                <th>Role Applied </th>
+                <th>Job ID </th>
+                <th>Season </th>
+                <th>Date of Submission</th>
+                <th>Status</th>
+                <th>Remove</th>
+            </tr>
+            {% for app in apps %}
+            <tr>
+                <th>
+                    <a href="{{ url_for('viewcompany', companyname=app.get_name()) }}" method="get">
+                        {{ app.get_name() }}
+                    </a>
+                </th>
+                <th>{{ app.get_role() }}</th>
+                <th>{{ app.get_id() }}</th>
+                <th>{{ app.get_season() }}</th>
+                <th>{{ app.get_date() }}</th>
+                <th>{{ app.get_status() }}</th>
+                <th style="text-align: center;"><i class="fas fa-trash"></i></th>
+            </tr>
+            {% endfor %}
+        </table>
+
+
+    </div>
+</div>
+</body>
+</html>

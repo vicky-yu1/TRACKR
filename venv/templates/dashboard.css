@@ -1,0 +1,11 @@
+.navbar{
+    list-style-type: none;
+}
+.navbar a {
+  float: right;
+  color: #f2f2f2;
+  text-align: right;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 40px;
+}

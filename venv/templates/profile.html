@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TRACKR</title>
+    <style>
+        form{
+            align-items: center;
+            justify-content: center;
+        }
+        #nameForm{
+            margin-right: 1%;
+        }
+        body {
+            background-color: #BCFBE3;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align:center;">
+        <h1><b>Welcome to App Tracker!</b></h1>
+        <div id="links">
+            <a href="profile">Profile</a>
+            <a href="dashboard">View Submitted Applications</a>
+            <a href="">Add Completed Job Application</a>
+        </div>
+        <br><br><br>
+        Name: Vicky
+        Ideal Career: Software Engineer
+        Predicted Salary is {{ salary }}
+
+        <form action="{{ url_for('goToProf') }}" method="post">
+            <label for="yoe">Years of Experience: </label>
+            <input type="text" id="yoe" name="yoe"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

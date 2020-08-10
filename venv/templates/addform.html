@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TRACKR</title>
+    <style>
+        body {
+            margin:0;
+            font-family: 'Roboto', sans-serif;
+        }
+        .nav {
+            margin: 0;
+            padding: 0;
+            height: 7vh;
+            position: relative;
+        }
+
+        .nav li {
+            list-style-type: none;
+            float: left;
+        }
+
+        .rightalign{
+            position: absolute;
+            right: 5%;
+            height: 100%;
+            display: -webkit-flex;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav li img {
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            position: absolute;
+            left: 5%;
+        }
+
+        .nav li a {
+            color: black;
+            margin-left: 5vw;
+            text-decoration: none;
+        }
+
+        .logout{
+            text-align: center;
+            border-radius: 15px;
+            border-style: solid;
+            border-color: black;
+            margin-left: 5vw;
+            padding: 15px 32px;
+            text-align: center;
+        }
+        form{
+            align-items: center;
+            justify-content: center;
+            background-color: #DCD3EE;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2%;
+            margin-top: 5%;
+        }
+        form h2 {
+            padding: 1%;
+        }
+        input {
+            padding: 2%;
+            width: 40%;
+            border-radius: 5px;
+            border: 2px solid;
+        }
+        #submit_button{
+            width: 20%;
+        }
+        #nameForm{
+            margin-right: 1%;
+        }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <ul>
+        <li><img src="{{ url_for('static', filename='trackr_logo2_transparent.png') }}" /></li>
+        <!--        <li class="left"><img src="venv/trackr_logo_transparent.png"></li>-->
+        <div class="rightalign">
+            <li><a href="dashboard">Applications Dashboard</a></li>
+            <li><a href="">Add Application</a></li>
+            <li><a href="profile">Profile</a></li>
+            <li><a href="home" class="logout">Logout</a></li>
+        </div>
+    </ul>
+</div>
+<div style="text-align:center;">
+    <form action="{{ url_for('viewapps') }}" method="post">
+        <h2>Add an application</h2>
+        <input type="text" id="companyName" name="companyName" placeholder="Company Name"><br><br>
+        <input type="text" id="position" name="position" placeholder="Position Applied"><br><br>
+        <input type="text" id="jobid" name="jobid" placeholder="Job ID"><br><br>
+        <input type="text" id="season" name="season" placeholder="Season of Job"><br><br>
+        <input type="text" placeholder="Date of Submission (MM/DD/YYYY)" onfocus="(this.type='date')" onblur="(this.type='text')">
+        <br><br>
+        <input type="submit" id="submit_button" value="Submit">
+    </form>
+</div>
+</body>
+</html>

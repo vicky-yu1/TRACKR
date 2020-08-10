@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TRACKR</title>
+    <style>
+        h1, h2{
+            text-align: center;
+        }
+        #left, right{
+            float: left;
+            width: 50%;
+        }
+        img{
+            width: 10%;
+            height: 10%;
+        }
+        #countryinfo{
+            margin-top: 10%;
+        }
+        body {
+            background-color: #BCFBE3;
+        }
+    </style>
+</head>
+<body>
+    <h1><a href="https://{{ companydomain }}"> {{ companyname }} </a></h1>
+    <p style="text-align:right;"><a href="dashboard">Back to Dashboard</a></p>
+    <img src="{{ companylogo }}">
+    <h2>Similar job postings: </h2>
+    <p> {{ jobname }}</p>
+    {{ jobdesc|safe }}
+    {{ joblink }}
+</body>
+</html>
